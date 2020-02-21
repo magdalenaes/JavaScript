@@ -1,19 +1,20 @@
 class Draw {
     constructor() {
-        this.options = ["red", "green", "blue"];
+        this.options = ['url("cherry.jpg")', 'url("raspberrie.jpg")', 'url("blueberry.jpg")'];
 
         let _result = this.drawResult();
 
         this.getDrawResult = () => _result;
     }
+
     drawResult() {
-        let colors = [];
+        let backgrounds = [];
 
         for (let i = 0; i < this.options.length; i++) {
             const index = Math.floor(Math.random() * this.options.length)
-            const color = this.options[index];
-            colors.push(color);
+            const background = this.options[index];
+            backgrounds.push(background);
         }
-        return colors;
+        return backgrounds;
     }
 }
