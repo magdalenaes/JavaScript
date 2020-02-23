@@ -4,6 +4,7 @@ const btn = document.querySelector("button");
 const taskCounter = document.querySelector("h1 span");
 const ul = document.querySelector("ul");
 const liElements = document.getElementsByClassName("task");
+const trash = document.getElementsByClassName("fas fa-trash");
 
 
 // add search
@@ -23,11 +24,6 @@ const liElements = document.getElementsByClassName("task");
 //     tasks.forEach(li => ul.appendChild(li));
 // }
 
-// remove task
-const removeTask = (e) => {
-    e.target.parentNode.remove();
-    taskCounter.textContent = liElements.length;
-}
 
 // add task
 const addTask = (e) => {
@@ -36,14 +32,19 @@ const addTask = (e) => {
     if (taskTitle !== "") {
         const taskNew = document.createElement("li");
         taskNew.className = "task";
-        taskNew.innerHTML = taskTitle + "<button>Usuń</button>";
+        taskNew.innerHTML = `<i class="far fa-circle"></i> ${taskTitle} <i class="fas fa-trash"></i>`
         ul.appendChild(taskNew);
         input.value = "";
         taskCounter.textContent = liElements.length;
-        taskNew.querySelector("button").addEventListener("click", removeTask);
+        taskNew.querySelector(".fa-trash").addEventListener("click", removeTask);
     }
 }
 
+// remove task
+const removeTask = (e) => {
+    e.target.parentNode.remove();
+    taskCounter.textContent = liElements.length;  
+}
 
 form.addEventListener("submit", addTask);
 // input.addEventListener("input", searchTask);
